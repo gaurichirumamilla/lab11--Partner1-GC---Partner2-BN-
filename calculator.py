@@ -1,3 +1,6 @@
+# https://github.com/gaurichirumamilla/lab11--Partner1-GC---Partner2-BN-
+# Partner 1: Gauri Chirumamilla
+# Partner 2: Brayden Nickum
 """
 calculator.py
 - Defines functions used to create a simple calculator
@@ -25,15 +28,6 @@ def multiply(a, b):
     else:
         return a * b
 
-def divide(a, b):
-    if type(a) != int or type(b) != int:
-        raise ValueError
-    elif a == 0:
-        raise ZeroDivisionError
-    else:
-        return b / a
-
-
 def logarithm(a, b):
     if type(a) != int or type(b) != int:
         raise ValueError
@@ -45,8 +39,29 @@ def exponent(a, b):
         raise ValueError
     else:
         return a ** b
+
+def sub(a, b):
+    return a - b
+
+def mul(a, b):
+    return a * b
+
+def div(a, b):
+    if a == 0:
+        raise ZeroDivisionError("a cannot be zero")
+    return b / a
+
+def log(a, b):
+    # log base a of b
+    if a <= 0 or a == 1 or b <= 0:
+        raise ValueError("invalid base or argument for logarithm")
+    return math.log(b, a)
+
+def exp(a, b):
+    return a ** b
+
 try:
-    answer= divide(0,2)
+    answer= div(0,2)
     print(answer)
 except ZeroDivisionError:
     print("division by zero")
