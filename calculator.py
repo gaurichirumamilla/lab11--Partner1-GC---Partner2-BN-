@@ -39,9 +39,10 @@ def subtract(a, b):
 def logarithm(a, b):
     if type(a) != int or type(b) != int:
         raise ValueError
+    if a <= 0 or a == 1 or b <= 0:
+        raise ZeroDivisionError
     else:
         return math.log(a,b)
-
 
 def mul(a, b):
     return a * b

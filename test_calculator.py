@@ -12,17 +12,20 @@ class TestCalculator(unittest.TestCase):
         self.assertEqual(add(0, 0), 0)
 
     def test_subtract(self):
-        self.assertEqual(sub(5, 3), 2)
-        self.assertEqual(sub(3, 5), -2)
-        self.assertEqual(sub(0, 0), 0)
+        self.assertEqual(subtract(5, 3), 2)
+        self.assertEqual(subtract(3, 5), -2)
+        self.assertEqual(subtract(0, 0), 0)
 
     ######## Partner 1
-    # def test_multiply(self): # 3 assertions
-    #     fill in code
+    def test_multiply(self): # 3 assertions
+        self.assertEqual(mul(3,5),15)
+        self.assertEqual(mul(10,2),20)
+        self.assertNotEqual(mul(3,5),0)
 
-    # def test_divide(self): # 3 assertions
-    #     fill in code
-    # ##########################
+    def test_divide(self): # 3 assertions
+        self.assertAlmostEqual(div(5, 12), 2.4)
+        self.assertEqual(div(2, 10), 5)
+        self.assertNotEqual(div(4, 8), 0)
 
     ######## Partner 2
     def test_divide_by_zero(self):
@@ -30,35 +33,33 @@ class TestCalculator(unittest.TestCase):
             div(0, 5)
 
     def test_logarithm(self):
-        self.assertAlmostEqual(log(2, 8), 3)
-        self.assertAlmostEqual(log(10, 100), 2)
-        self.assertAlmostEqual(log(5, 1), 0)
+        self.assertAlmostEqual(logarithm(2, 8), 0.3333333)
+        self.assertAlmostEqual(logarithm(10, 100), 0.5)
+        self.assertAlmostEqual(logarithm(5, 5), 1.0)
 
     def test_log_invalid_base(self):
-        with self.assertRaises(ValueError):
-            log(1, 10)
-        with self.assertRaises(ValueError):
-            log(0, 10)
-        with self.assertRaises(ValueError):
-            log(2, -8)
+        with self.assertRaises(ZeroDivisionError):
+            logarithm(1, 10)
+        with self.assertRaises(ZeroDivisionError):
+            logarithm(0, 10)
+        with self.assertRaises(ZeroDivisionError):
+            logarithm(2, -8)
     
     ######## Partner 1
-    # def test_log_invalid_argument(self): # 1 assertion
-    #     # call log function inside, example:
-    #     # with self.assertRaises(<INSERT_ERROR_TYPE>):
-    #     #     logarithm(0, 5)
-    #     fill in code
+    def test_log_invalid_argument(self): # 1 assertion
+        with self.assertRaises(ValueError):
+            logarithm("hi", 5)
 
-    # def test_hypotenuse(self): # 3 assertions
-    #     fill in code
+    def test_hypotenuse(self): # 3 assertions
+        self.assertEqual(hypotenuse(3, 4), 5)
+        self.assertAlmostEqual(hypotenuse(10, 2), 10.1980390)
+        self.assertNotEqual(hypotenuse(7, 9), 10)
 
-    # def test_sqrt(self): # 3 assertions
-    #     # Test for invalid argument, example:
-    #     # with self.assertRaises(<INSERT_ERROR_TYPE>):
-    #     #    square_root(NUM)
-    #     # Test basic function
-    #     fill in code
-    ##########################
+    def test_sqrt(self): # 3 assertions
+        with self.assertRaises(ValueError):
+            square_root(-4)
+        self.assertEqual(square_root(4), 2)
+        self.assertEqual(square_root(9), 3)
 
 # Do not touch this
 if __name__ == "__main__":
